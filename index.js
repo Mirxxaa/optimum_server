@@ -24,6 +24,11 @@ app.use("/jobs", jobRoutes);
 const careersApplicationRoutes = require("./routes/careersApplicationRoutes");
 app.use("/careers-applications", careersApplicationRoutes);
 
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // ← This is the missing piece
+
+
+
+
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URI, {
