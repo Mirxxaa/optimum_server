@@ -21,6 +21,9 @@ app.use("/applications", applicationRoutes);
 const jobRoutes = require("./routes/jobRoutes");
 app.use("/jobs", jobRoutes);
 
+const careersApplicationRoutes = require("./routes/careersApplicationRoutes");
+app.use("/careers-applications", careersApplicationRoutes);
+
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URI, {
