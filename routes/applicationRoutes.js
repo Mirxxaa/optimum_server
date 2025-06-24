@@ -70,4 +70,18 @@ router.get("/download/:id", async (req, res) => {
   }
 });
 
+// Delete application by ID
+router.delete("/:id", async (req, res) => {
+  try {
+    const deletedApp = await Application.findByIdAndDelete(req.params.id);
+    if (!deletedApp) {
+      return res.status(404).json({ message: "Application not found" });
+    }
+    res.status(200).json({ message: "Application deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting application:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 module.exports = router;
